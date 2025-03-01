@@ -31,13 +31,11 @@ void hm_hello() {
     }
 }
   
-void hm_partition(unsigned int nvtxs, unsigned int nhedges, int *hewt, int *vtw, size_t *eind, int *eptr, int *part, int kway, int passes, long seed)
+void hm_partition(unsigned int nvtxs, unsigned int nhedges, int *hewt, int *vtw, int *eind, int *eptr, int *part, int kway, int passes, long seed)
 {
     printf("This is the wrapper for the HMETIS call\n");
-    for (int i = 0; i < nvtxs; ++i)
-    {
-        part[i] = 0;
-    }
-    printf("Moved all vertices into bin 0");
+    int edgecut;
+
+    HMETIS_PartRecursive(nvtxs, nhedges, vtw, eptr, eind, hewt, kway, passes, options, part, &edgecut);
 
 }
