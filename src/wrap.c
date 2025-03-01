@@ -18,7 +18,7 @@ static int part[] = {-1, -1, -1, -1, -1, -1, -1};
 
 
 
-void hello() {
+void hm_hello() {
     printf("Hello, world from C\n");
     int edgecut;
     
@@ -31,7 +31,7 @@ void hello() {
     }
 }
   
-void partition(unsigned int nvtxs, unsigned int nhedges, int *hewt, int *vtw, size_t *eind, int *eptr, int *part, int kway, int passes, long seed)
+void hm_partition(unsigned int nvtxs, unsigned int nhedges, int *hewt, int *vtw, size_t *eind, int *eptr, int *part, int kway, int passes, long seed)
 {
     printf("This is the wrapper for the HMETIS call\n");
 

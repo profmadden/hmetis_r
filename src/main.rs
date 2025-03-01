@@ -6,7 +6,7 @@ fn main() {
     println!("hmetis wrapper");
 
     unsafe {
-        hmetis_r::hello();
+        hmetis_r::hm_hello();
         // hmetis_r::partition(nvtxs, nhedges, hewt, vtw, eind, eptr, part, kway, passes, seed);
     }
 }
