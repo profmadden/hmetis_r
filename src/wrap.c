@@ -19,7 +19,7 @@ static int part[] = {-1, -1, -1, -1, -1, -1, -1};
 
 
 void hm_hello() {
-    printf("Hello, world from C\n");
+    printf("Hello, world from the hMetis partitioning wrapper\n");
     int edgecut;
     
     HMETIS_PartRecursive(7, 4, vwgts, eptr, eind, hewgts, 2, 10, options, part, &edgecut);
