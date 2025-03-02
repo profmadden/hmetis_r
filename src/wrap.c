@@ -33,7 +33,7 @@ void hm_hello() {
   
 void hm_partition(unsigned int nvtxs, unsigned int nhedges, int *hewt, int *vtw, int *eind, int *eptr, int *part, int kway, int passes, long seed)
 {
-    printf("This is the wrapper for the HMETIS call\n");
+    // printf("This is the wrapper for the HMETIS call\n");
     int edgecut;
 
     HMETIS_PartRecursive(nvtxs, nhedges, vtw, eptr, eind, hewt, kway, passes, options, part, &edgecut);
