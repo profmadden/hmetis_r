@@ -13,7 +13,27 @@ static int hewgts[] = {1, 1, 1, 1};
 // start-with-part=1 means use starting positions
 //    if there are starting positions, those with 0 or 1 are fixed,
 //    while -1 indicates free-to-move
-static int options[] = {0};
+// Options:
+// 0 -- set to 1 for non-default behavior
+// 1 -- number of runs
+// 2 -- scheme for ctype
+// 3 -- scheme for otype
+// 4 -- vcycle
+// 5 -- not used
+// 6 -- not used
+// 7 -- random seed
+// 8 -- debug flags
+static int options[] = {
+    1, // Not defaults
+    1, // 1 run
+    1, // ctype Hybrid First Choice HFC
+    1, // Otype minimixe hyperedge cut    
+    1, // Vcycle only on the best run
+    0, // not used
+    0, // not used,
+    0, // random seed
+    0  // debug
+};
 static int part[] = {-1, -1, -1, -1, -1, -1, -1};
 
 
@@ -31,11 +51,13 @@ void hm_hello() {
     }
 }
   
-void hm_partition(unsigned int nvtxs, unsigned int nhedges, int *hewt, int *vtw, int *eind, int *eptr, int *part, int kway, int passes, long seed)
+void hm_partition(unsigned int nvtxs, unsigned int nhedges, int *hewt, int *vtw, int *eind, int *eptr,
+    int *part, int kway, int passes, long seed, int imbalance)
 {
     // printf("This is the wrapper for the HMETIS call\n");
     int edgecut;
-
-    HMETIS_PartRecursive(nvtxs, nhedges, vtw, eptr, eind, hewt, kway, passes, options, part, &edgecut);
+    options[1] = passes;
+    options[7] = seed;
+    HMETIS_PartRecursive(nvtxs, nhedges, vtw, eptr, eind, hewt, kway, imbalance, options, part, &edgecut);
 
 }
